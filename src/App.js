@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { Title } from "./comps/Title";
+
+import {UploadForm} from './comps/UploadForm.jsx'
+
+import { ImageList } from "./comps/ImageList.jsx";
+import { Modal } from "./comps/Modal.jsx";
+
+import {useState} from 'react';
 
 function App() {
+  const[selectedImg, setSelectImg]= useState(null);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     
+      <Title />
+      <UploadForm />
+      <ImageList setSelectImg={setSelectImg} />
+      { selectedImg && <Modal selectedImg={selectedImg} setSelectImg={setSelectImg}/>}
     </div>
   );
 }
